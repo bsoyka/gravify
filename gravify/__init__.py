@@ -1,18 +1,25 @@
-import urllib, hashlib
+import urllib.parse
+import hashlib
 from validate_email import validate_email
-is_valid = validate_email('example@example.com')
 
 class Gravatar():
     
-    def __init__(self, email, verify_email=True):
+    def __init__(self, email, verify_email=True, default_image=None):
         if verify_email:
             if not validate_email(email):
                 raise Exception("Invalid email address")
+        
         self.email = email
+        self.default_image = default_image
 
     @property
     def url(self):
-        return "https://www.gravatar.com/avatar/" + hashlib.md5(self.email.encode("utf-8").lower()).hexdigest()
+        params = {}
+        
+        if self.default_image != None:
+            params["d"] = self.default_image
+        
+        return "https://www.gravatar.com/avatar/" + hashlib.md5(self.email.encode("utf-8").lower()).hexdigest() + "?" + urllib.parse.urlencode(params)
     
     @property
     def unsecure_url(self):
