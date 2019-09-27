@@ -1,8 +1,13 @@
 import urllib, hashlib
+from validate_email import validate_email
+is_valid = validate_email('example@example.com')
 
 class Gravatar():
     
-    def __init__(self, email):
+    def __init__(self, email, verify_email=True):
+        if verify_email:
+            if not validate_email(email):
+                raise Exception("Invalid email address")
         self.email = email
 
     @property
