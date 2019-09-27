@@ -1,0 +1,17 @@
+import unittest
+import sys
+
+sys.path.insert(0, '../')
+
+import gravify
+
+class TestMain(unittest.TestCase):
+    
+    def test_plain_email(self):
+        self.assertEqual(gravify.Gravatar("bensoyka@icloud.com").url, "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?")
+        
+    def test_default_identicon(self):
+        self.assertEqual(gravify.Gravatar("bensoyka@icloud.com", default_image="identicon").url, "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?d=identicon")
+
+if __name__ == "__main__":
+    unittest.main()
