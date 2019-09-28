@@ -12,6 +12,10 @@
 
 `pip install gravify`
 
+## Documentation
+
+[bsoyka.gitbook.io/gravify/](https://bsoyka.gitbook.io/gravify/)
+
 ## Contributing
 
 Want to help? Contact [@bsoyka](https://github.com/bsoyka) for more information.
