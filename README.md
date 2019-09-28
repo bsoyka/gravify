@@ -10,11 +10,15 @@
 
 ## Installation
 
-`pip install gravify`
+Installing gravify is easy! Just run the following command:
+
+```
+pip install gravify
+```
 
 ## Documentation
 
-[bsoyka.gitbook.io/gravify/](https://bsoyka.gitbook.io/gravify/)
+You can learn how to use gravify by taking a look at our [documentation pages](https://bsoyka.gitbook.io/gravify/)!
 
 ## Contributing
 
