@@ -1,4 +1,23 @@
-# Gravify [![PyPI](https://img.shields.io/pypi/v/gravify)](https://pypi.org/project/gravify/) [![GitHub license](https://img.shields.io/github/license/bsoyka/gravify)](https://github.com/bsoyka/gravify/blob/master/LICENSE)
-A simple package to generate a Gravatar URL.
+[![PyPI](https://img.shields.io/pypi/v/gravify)](https://pypi.org/project/gravify/)
+[![GitHub license](https://img.shields.io/github/license/bsoyka/gravify)](https://github.com/bsoyka/gravify/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/bsoyka/gravify)](https://github.com/bsoyka/gravify/issues)
+[![GitHub stars](https://img.shields.io/github/stars/bsoyka/gravify)](https://github.com/bsoyka/gravify/stargazers)
 
-Documentation coming soon. Want to help? Contact [@bsoyka](https://github.com/bsoyka) for more information.
+<div align="center">
+  <img src="docs/logo.png" style="height: 300px; width: 400px">
+  <h3 style="color: #4a8fe0"><b>A simple package to generate a Gravatar URL.</b></h3>
+</div>
+
+## Installation
+
+`pip install gravify`
+
+## Contributing
+
+Want to help? Contact [@bsoyka](https://github.com/bsoyka) for more information.
+
+## License
+
+**gravify** © 2019 Benjamin Soyka. Released under the [GPL-3.0](LICENSE) License.
+
+
