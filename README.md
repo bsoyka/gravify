@@ -4,8 +4,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/bsoyka/gravify)](https://github.com/bsoyka/gravify/stargazers)
 
 <div align="center">
-  <img src="docs/logo.png" style="height: 300px; width: 400px">
-  <h3 style="color: #4a8fe0"><b>A simple package to generate a Gravatar URL.</b></h3>
+  <img src="docs/logo.png" style="height: 300px; width: 300px;">
+  <h3><b><span style="color:#4a8fe0;">A simple package to generate a Gravatar URL.</span></b></h3>
 </div>
 
 ## Installation
