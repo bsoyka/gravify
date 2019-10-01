@@ -24,6 +24,11 @@ class TestMain(unittest.TestCase):
             gravify.Gravatar("bensoyka@icloud.com", default_image=None).url,
             "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052")
 
+    def test_with_size_param(self):
+        self.assertEqual(
+            gravify.Gravatar("bensoyka@icloud.com", default_image=None, size=200).url,
+            "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?s=200")
+
 
 if __name__ == "__main__":
     unittest.main()
