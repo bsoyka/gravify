@@ -22,8 +22,12 @@ class Gravatar():
         if self.default_image != None:
             params["d"] = self.default_image
         
-        return "https://www.gravatar.com/avatar/" + hashlib.md5(self.email.encode("utf-8").lower()).hexdigest() + "?" + urllib.parse.urlencode(params)
+        return "https://www.gravatar.com/avatar/" + self.hash + "?" + urllib.parse.urlencode(params)
     
     @property
     def unsecure_url(self):
         return self.url.replace("https://", "http://")
+
+    @property
+    def hash(self):
+        return hashlib.md5(self.email.encode("utf-8").lower()).hexdigest()    
