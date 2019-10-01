@@ -1,5 +1,6 @@
 import hashlib
 import urllib.parse
+import urllib.request
 
 import sentry_sdk
 from validate_email import validate_email
@@ -38,3 +39,7 @@ class Gravatar():
     @property
     def hash(self):
         return hashlib.md5(self.email.encode("utf-8").lower()).hexdigest()
+
+    @property
+    def file(self):
+        return urllib.request.urlopen(self.url)
