@@ -24,6 +24,9 @@ class TestMain(unittest.TestCase):
             gravify.Gravatar("bensoyka@icloud.com", default_image=None).url,
             "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052")
 
+    def test_file_handler(self):
+        self.assertIsInstance(gravify.Gravatar("bensoyka@icloud.com").file.read(4), bytes)
+
 
 if __name__ == "__main__":
     unittest.main()
