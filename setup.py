@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gravify",
-    version="0.2.0",
+    version="0.3.0",
     author="Benjamin Soyka",
     author_email="bensoyka@icloud.com",
     description="A simple package to generate a Gravatar URL",
