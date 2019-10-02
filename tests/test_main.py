@@ -37,7 +37,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(
             Gravatar("bensoyka@icloud.com", size=300).url,
             "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?s=300")
-    
+
     def test_force_default_param(self):
         self.assertEqual(
             Gravatar("bensoyka@icloud.com", force_default=True).url,
