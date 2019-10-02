@@ -24,11 +24,9 @@ class Gravatar():
     def url(self):
         params = {
             "s": self.size,
-            "d": self.default_image
+            "d": self.default_image,
+            "f": "y" if self.force_default else None
         }
-
-        if self.force_default:
-            params["f"] = "y"
 
         url_params = urllib.parse.urlencode({k: v for k, v in params.items() if v is not None})
 
