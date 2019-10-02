@@ -38,7 +38,7 @@ class Gravatar():
 
     @property
     def hash(self):
-        return hashlib.md5(self.email.strip(" ").encode("utf-8").lower()).hexdigest()
+        return hashlib.md5(self.email.strip().encode("utf-8").lower()).hexdigest()
 
     @property
     def file(self):
