@@ -15,7 +15,7 @@ class Gravatar():
             if not validate_email(email):
                 raise Exception("Invalid email address")
 
-        self.email = email
+        self.email = email.strip().lower()
         self.default_image = default_image
         self.size = size
 
@@ -38,7 +38,7 @@ class Gravatar():
 
     @property
     def hash(self):
-        return hashlib.md5(self.email.strip().encode("utf-8").lower()).hexdigest()
+        return hashlib.md5(self.email.encode("utf-8")).hexdigest()
 
     @property
     def file(self):
