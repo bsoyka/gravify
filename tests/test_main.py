@@ -38,6 +38,11 @@ class TestMain(unittest.TestCase):
             Gravatar("bensoyka@icloud.com", size=300).url,
             "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?s=300")
 
+    def test_force_default_param(self):
+        self.assertEqual(
+            Gravatar("bensoyka@icloud.com", force_default=True).url,
+            "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?f=y")
+
     def test_file_handler(self):
         self.assertIsInstance(Gravatar("bensoyka@icloud.com").file.read(4), bytes)
 
