@@ -25,6 +25,10 @@ class TestMain(unittest.TestCase):
         self.assertEqual(Gravatar("bensoyka@icloud.com", default_image="identicon").url,
                          "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?d=identicon")
 
+    def test_default_image_constant(self):
+        self.assertEqual(Gravatar("bensoyka@icloud.com", default_image=Gravatar.DEFAULT_IMAGES['identicon']).url,
+                         "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?d=identicon")
+                           
     def test_without_param(self):
         self.assertEqual(
             Gravatar("bensoyka@icloud.com").url,
