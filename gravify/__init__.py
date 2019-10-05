@@ -9,6 +9,16 @@ sentry_sdk.init("https://d1a3441649e64a96b52c441233c47f26@sentry.io/1763873")  #
 
 
 class Gravatar():
+    DEFAULT_IMAGES = {
+        '404': '404',
+        'blank': 'blank',
+        'identicon': 'identicon',
+        'monsterid': 'monsterid',
+        'mystery_person': 'mp',
+        'retro': 'retro',
+        'robohash': 'robohash',
+        'wavatar': 'wavatar',
+    }
 
     def __init__(self, email, verify_email=True, default_image=None, size=None, force_default=False):
         if verify_email:
