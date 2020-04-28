@@ -50,6 +50,13 @@ class TestMain(unittest.TestCase):
     def test_file_handler(self):
         self.assertIsInstance(Gravatar("bensoyka@icloud.com").file.read(4), bytes)
 
+    def test_ignore_unknown_rating(self):
+        self.assertEqual(Gravatar("bensoyka@icloud.com", max_rating='xyz').url, "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052")
+
+    def test_max_rating(self):
+        self.assertEqual(Gravatar("bensoyka@icloud.com", max_rating='g').url, "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?r=g")
+        self.assertEqual(Gravatar("bensoyka@icloud.com", default_image="identicon", max_rating='g').url, "https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?d=identicon&r=g")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -9,7 +9,7 @@ sentry_sdk.init("https://d1a3441649e64a96b52c441233c47f26@sentry.io/1763873")  #
 
 
 class Gravatar():
-    def __init__(self, email, verify_email=True, default_image=None, size=None, force_default=False):
+    def __init__(self, email, verify_email=True, default_image=None, size=None, force_default=False, max_rating=None):
         if verify_email:
             if not validate_email(email):
                 raise Exception("Invalid email address")
@@ -18,13 +18,15 @@ class Gravatar():
         self.default_image = default_image
         self.size = size
         self.force_default = force_default
+        self.max_rating = max_rating
 
     @property
     def url(self):
         params = {
             "s": self.size,
             "d": self.default_image,
-            "f": "y" if self.force_default else None
+            "f": "y" if self.force_default else None,
+            "r": self.max_rating if self.max_rating in ["g", "pg", "r", "x"] else None
         }
 
         url_params = urllib.parse.urlencode({k: v for k, v in params.items() if v is not None})
