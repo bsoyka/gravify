@@ -2,12 +2,7 @@ import hashlib
 import urllib.parse
 import urllib.request
 
-import sentry_sdk
 from validate_email import validate_email
-
-sentry_sdk.init(
-    'https://d1a3441649e64a96b52c441233c47f26@sentry.io/1763873'
-)  # Automatic bug reporting
 
 
 class Gravatar:
