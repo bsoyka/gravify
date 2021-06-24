@@ -10,9 +10,8 @@ sentry_sdk.init("https://d1a3441649e64a96b52c441233c47f26@sentry.io/1763873")  #
 
 class Gravatar():
     def __init__(self, email, verify_email=True, default_image=None, size=None, force_default=False, max_rating=None):
-        if verify_email:
-            if not validate_email(email):
-                raise Exception("Invalid email address")
+        if verify_email and not validate_email(email):
+            raise Exception("Invalid email address")
 
         self.email = email.strip().lower()
         self.default_image = default_image
