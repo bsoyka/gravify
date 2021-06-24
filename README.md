@@ -1,29 +1,29 @@
-<div align="center">
-  <img src="docs/logo.png" style="height: 300px; width: 300px;">
-  <h3><b><span style="color:#4a8fe0;"> A simple package to generate a Gravatar URL. 🔗 </span></b></h3>
-</div>
+# gravify
 
-[![PyPI](https://img.shields.io/pypi/v/gravify)](https://pypi.org/project/gravify/)
-[![GitHub license](https://img.shields.io/github/license/bsoyka/gravify)](https://github.com/bsoyka/gravify/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/bsoyka/gravify)](https://github.com/bsoyka/gravify/issues)
-[![GitHub stars](https://img.shields.io/github/stars/bsoyka/gravify)](https://github.com/bsoyka/gravify/stargazers)
+**gravify** is a simple package to generate
+[Gravatar](https://en.gravatar.com/) URLs. :link:
+
+```py
+>>> user = Gravatar("example@example.com")
+>>> user.url
+'https://www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8'
+```
+
+[![Downloads](https://pepy.tech/badge/gravify)](https://pepy.tech/project/gravify)
+[![Supported Versions](https://img.shields.io/pypi/pyversions/gravify.svg)](https://pypi.org/project/gravify)
+[![Testing](https://img.shields.io/github/workflow/status/bsoyka/gravify/Python%20package?label=tests)](https://github.com/bsoyka/gravify/actions?query=workflow%3A%22Python+package%22)
+[![License](https://img.shields.io/pypi/l/gravify)](https://github.com/bsoyka/gravify/blob/master/LICENSE)
+[![Version](https://img.shields.io/pypi/v/gravify?label=latest)](https://pypi.org/project/gravify)
 
 ## Installation
 
-Installing gravify is easy! Just run the following command:
+gravify is available on PyPI:
 
+```sh
+$ python -m pip install gravify
 ```
-pip install gravify
-```
 
-## Documentation
+gravify officially supports Python 2.7 & 3.5+.
 
-You can learn how to use gravify by taking a look at our [documentation pages](https://bsoyka.gitbook.io/gravify/)!
-
-## Contributing
-
-Want to help? Contact [@bsoyka](https://github.com/bsoyka) for more information.
-
-## License
-
-Released under the [GPL-3.0](LICENSE) License.
+## API Reference
+See [Read the Docs](https://gravify.readthedocs.io/) for gravify's documentation.

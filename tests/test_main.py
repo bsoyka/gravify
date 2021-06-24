@@ -1,4 +1,4 @@
-from gravify import Gravatar, DEFAULT_AVATARS
+from gravify import Gravatar
 
 
 def test_plain_email():
@@ -32,15 +32,6 @@ def test_hash_to_lowercase():
 def test_default_identicon():
     assert (
         Gravatar('bensoyka@icloud.com', default_image='identicon').url
-        == 'https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?d=identicon'
-    )
-
-
-def test_default_image_constant():
-    assert (
-        Gravatar(
-            'bensoyka@icloud.com', default_image=DEFAULT_AVATARS['identicon']
-        ).url
         == 'https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?d=identicon'
     )
 
