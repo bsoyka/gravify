@@ -14,6 +14,7 @@ setuptools.setup(
     url='https://gravify.readthedocs.io/',
     packages=setuptools.find_packages(),
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*',
+    install_requires=['six==1.16.0', 'validate_email==1.3'],
     license='GPLv3',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
