@@ -9,7 +9,7 @@ if PY3:
     from urllib.parse import urlencode
     from urllib.request import urlopen
 else:
-    from urllib import urlencode, urlopen # pylint: disable=no-name-in-module
+    from urllib import urlencode, urlopen  # pylint: disable=no-name-in-module
 
 __version__ = '1.0.0'
 
@@ -22,7 +22,8 @@ class Gravatar:
         verify_email (bool): Whether to verify that the email address is
             valid
         default_image (str): The default image code to use if the user
-            isn't found (one of: 404, mp, identicon, monsterid, wavatar, retro, robohash, blank)
+            isn't found (one of: 404, mp, identicon, monsterid, wavatar,
+            retro, robohash, blank)
         size (int): A single dimension determining the size of the image
             (between 1 and 2048)
         force_default (bool): Whether to always force the default image
@@ -36,7 +37,6 @@ class Gravatar:
     def __init__(
         self,
         email,
-        *,
         verify_email=True,
         default_image=None,
         size=None,
@@ -70,7 +70,7 @@ class Gravatar:
         }
 
         url_params = urlencode(
-            {k: v for k, v in params.items() if v is not None}
+            sorted({k: v for k, v in params.items() if v is not None}.items())
         )
 
         _url = 'https://www.gravatar.com/avatar/' + self.hash
@@ -85,7 +85,7 @@ class Gravatar:
             str
         """
 
-        return self.url.replace('https://', 'http://')
+        return self.url.replace('https://', 'http://', 1)
 
     @property
     def hash(self):
