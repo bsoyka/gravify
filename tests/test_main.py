@@ -1,3 +1,4 @@
+import pytest
 from gravify import Gravatar
 
 
@@ -59,10 +60,9 @@ def test_file_handler():
 
 
 def test_ignore_unknown_rating():
-    assert (
-        Gravatar('bensoyka@icloud.com', max_rating='xyz').url
-        == 'https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052'
-    )
+    with pytest.raises(Exception) as excinfo:
+        Gravatar('bensoyka@icloud.com', max_rating='xyz').url == 'https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052'
+    assert str(excinfo.value) == "max_rating must be one of: ['g', 'pg', 'r', 'x']"
 
 
 def test_max_rating():
@@ -76,3 +76,31 @@ def test_max_rating():
         ).url
         == 'https://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052?d=identicon&r=g'
     )
+
+def test_data_type_email():
+    gravatar_instance = Gravatar(email='email@email.com')
+    assert isinstance(gravatar_instance.email, str)
+
+def test_data_type_verify_email():
+    gravatar_instance = Gravatar(email='email@email.com', verify_email=True)
+    assert isinstance(gravatar_instance.verify_email, bool)
+
+def test_data_type_and_value_default_image():
+    gravatar_instance = Gravatar(email='email@email.com', default_image='404')
+    assert isinstance(gravatar_instance.default_image, str)
+    assert gravatar_instance.default_image in ['404', 'mp', 'identicon', 'monsterid', 
+        'wavatar', 'retro', 'robohash', 'blank']
+
+def test_data_type_and_value_size():
+    gravatar_instance = Gravatar(email='email@email.com', size=1)
+    assert isinstance(gravatar_instance.size, int)
+    assert 1 <= gravatar_instance.size <= 2048
+
+def test_data_type_force_default():
+    gravatar_instance = Gravatar(email='email@email.com', force_default=False)
+    assert isinstance(gravatar_instance.force_default, bool)
+
+def test_data_type_and_value_max_rating():
+    gravatar_instance = Gravatar(email='email@email.com', max_rating='g')
+    assert isinstance(gravatar_instance.max_rating, str)
+    assert gravatar_instance.max_rating in ['g', 'pg', 'r', 'x']
