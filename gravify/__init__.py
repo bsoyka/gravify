@@ -79,18 +79,28 @@ class Gravatar:
     @property
     def default_image(self):
         return self._default_image
-    
+
     @default_image.setter
     def default_image(self, value):
         """Validate and set string data type and for default_image"""
-        possible_values = ['404', 'mp', 'identicon', 'monsterid', 
-        'wavatar', 'retro', 'robohash', 'blank']
         if value is None:
             self._default_image = value
             return
         if isinstance(value, str):
+            possible_values = [
+                '404',
+                'mp',
+                'identicon',
+                'monsterid',
+                'wavatar',
+                'retro',
+                'robohash',
+                'blank',
+            ]
             if value not in possible_values:
-                raise ValueError(f'default_image must be one of: {possible_values}')
+                raise ValueError(
+                    'default_image must be one of: {0}'.format(possible_values)
+                )
             self._default_image = value
         else:
             raise TypeError('default_image must be string')
@@ -98,7 +108,7 @@ class Gravatar:
     @property
     def size(self):
         return self._size
-    
+
     @size.setter
     def size(self, value):
         """Validate and set int data type and value for size"""
@@ -131,13 +141,15 @@ class Gravatar:
     @max_rating.setter
     def max_rating(self, value):
         """Validate and set string data type and value for max_rating"""
-        possible_values = ['g', 'pg', 'r', 'x']
         if value is None:
             self._max_rating = value
             return
         if isinstance(value, str):
+            possible_values = ['g', 'pg', 'r', 'x']
             if value not in possible_values:
-                raise ValueError(f'max_rating must be one of: {possible_values}')
+                raise ValueError(
+                    'max_rating must be one of: {0}'.format(possible_values)
+                )
             self._max_rating = value
         else:
             raise TypeError('max_rating must be string')
