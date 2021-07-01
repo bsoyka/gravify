@@ -43,14 +43,116 @@ class Gravatar:
         force_default=False,
         max_rating=None,
     ):
-        if verify_email and not validate_email(email):
-            raise ValueError('Invalid email address')
-
-        self.email = email.strip().lower()
+        self.verify_email = verify_email
+        self.email = email
         self.default_image = default_image
         self.size = size
         self.force_default = force_default
         self.max_rating = max_rating
+
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, value):
+        """Validate and set string data type and value for email"""
+        if isinstance(value, str):
+            if self.verify_email and not validate_email(value):
+                raise ValueError('Invalid email address')
+            self._email = value.strip().lower()
+        else:
+            raise TypeError('email must be string')
+
+    @property
+    def verify_email(self):
+        return self._verify_email
+
+    @verify_email.setter
+    def verify_email(self, value):
+        """Validate and set boolean data type for verify_email"""
+        if isinstance(value, bool):
+            self._verify_email = value
+        else:
+            raise TypeError('verify_email must be boolean')
+
+    @property
+    def default_image(self):
+        return self._default_image
+
+    @default_image.setter
+    def default_image(self, value):
+        """Validate and set string data type and for default_image"""
+        if value is None:
+            self._default_image = value
+            return
+        if isinstance(value, str):
+            possible_values = [
+                '404',
+                'mp',
+                'identicon',
+                'monsterid',
+                'wavatar',
+                'retro',
+                'robohash',
+                'blank',
+            ]
+            if value not in possible_values:
+                raise ValueError(
+                    'default_image must be one of: {0}'.format(possible_values)
+                )
+            self._default_image = value
+        else:
+            raise TypeError('default_image must be string')
+
+    @property
+    def size(self):
+        return self._size
+
+    @size.setter
+    def size(self, value):
+        """Validate and set int data type and value for size"""
+        if value is None:
+            self._size = value
+            return
+        if isinstance(value, int):
+            if not (1 <= value <= 2048):
+                raise ValueError('size must be an integer between 1 and 2048')
+            self._size = value
+        else:
+            raise TypeError('size must be integer')
+
+    @property
+    def force_default(self):
+        return self._force_default
+
+    @force_default.setter
+    def force_default(self, value):
+        """Validate and set boolean data type for force_default"""
+        if isinstance(value, bool):
+            self._force_default = value
+        else:
+            raise TypeError('force_default must be boolean')
+
+    @property
+    def max_rating(self):
+        return self._max_rating
+
+    @max_rating.setter
+    def max_rating(self, value):
+        """Validate and set string data type and value for max_rating"""
+        if value is None:
+            self._max_rating = value
+            return
+        if isinstance(value, str):
+            possible_values = ['g', 'pg', 'r', 'x']
+            if value not in possible_values:
+                raise ValueError(
+                    'max_rating must be one of: {0}'.format(possible_values)
+                )
+            self._max_rating = value
+        else:
+            raise TypeError('max_rating must be string')
 
     @property
     def url(self):
