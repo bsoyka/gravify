@@ -11,7 +11,7 @@ if PY3:
 else:
     from urllib import urlencode, urlopen  # pylint: disable=no-name-in-module
 
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 
 
 class Gravatar:

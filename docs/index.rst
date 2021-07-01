@@ -32,9 +32,9 @@ gravify is available on PyPI:
 
 .. code:: console
 
-    $ python -m pip install gravify
+    $ pip install gravify
 
-gravify officially supports Python 2.7 & 3.5+.
+gravify officially supports Python 3.5+.
 
 API Reference
 -------------

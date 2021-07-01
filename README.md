@@ -20,10 +20,10 @@
 gravify is available on PyPI:
 
 ```sh
-$ python -m pip install gravify
+$ pip install gravify
 ```
 
-gravify officially supports Python 2.7 & 3.5+.
+gravify officially supports Python 3.5+.
 
 ## API Reference
 See [Read the Docs](https://gravify.readthedocs.io/) for gravify's documentation.
