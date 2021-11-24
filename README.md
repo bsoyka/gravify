@@ -23,7 +23,7 @@ gravify is available on PyPI:
 $ pip install gravify
 ```
 
-gravify officially supports Python 3.5+.
+gravify officially supports Python 3.6+.
 
 ## API Reference
 See [Read the Docs](https://gravify.readthedocs.io/) for gravify's documentation.

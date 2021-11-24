@@ -1,7 +1,9 @@
 {
-    "restructuredtext.confPath": "${workspaceFolder}\\docs",
     "editor.rulers": [
         72,
-        79
-    ]
+        79,
+        80
+    ],
+    "reflowMarkdown.preferredLineLength": 80,
+    "restructuredtext.confPath": "${workspaceFolder}\\docs"
 }

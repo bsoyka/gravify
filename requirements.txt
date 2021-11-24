@@ -1,2 +1,0 @@
-six==1.16.0
-validate_email==1.3
