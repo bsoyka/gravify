@@ -118,3 +118,63 @@ def test_data_type_and_value_max_rating():
     gravatar_instance = Gravatar(email="email@email.com", max_rating="g")
     assert isinstance(gravatar_instance.max_rating, str)
     assert gravatar_instance.max_rating in ["g", "pg", "r", "x"]
+
+
+def test_blank_email():
+    with raises(ValueError):
+        Gravatar("")
+
+
+def test_invalid_email():
+    with raises(ValueError):
+        Gravatar("invalid")
+
+
+def test_non_string_email():
+    with raises(TypeError):
+        Gravatar(1)
+
+
+def test_non_bool_verify_email():
+    with raises(TypeError):
+        Gravatar("bensoyka@icloud.com", verify_email=1)
+
+
+def test_invalid_default_image():
+    with raises(ValueError):
+        Gravatar("bensoyka@icloud.com", default_image="asdf")
+
+
+def test_non_string_default_image():
+    with raises(TypeError):
+        Gravatar("bensoyka@icloud.com", default_image=1)
+
+
+def test_invalid_size():
+    with raises(ValueError):
+        Gravatar("bensoyka@icloud.com", size=0)
+
+    with raises(ValueError):
+        Gravatar("bensoyka@icloud.com", size=2049)
+
+
+def test_non_int_size():
+    with raises(TypeError):
+        Gravatar("bensoyka@icloud.com", size="asdf")
+
+
+def test_non_bool_force_default():
+    with raises(TypeError):
+        Gravatar("bensoyka@icloud.com", force_default="asdf")
+
+
+def test_non_string_max_rating():
+    with raises(TypeError):
+        Gravatar("bensoyka@icloud.com", max_rating=1)
+
+
+def test_unsecure_url():
+    assert (
+        Gravatar("bensoyka@icloud.com").unsecure_url
+        == "http://www.gravatar.com/avatar/7246821a7bf0b1b37794b39cb08ee052"
+    )
