@@ -161,7 +161,9 @@ class Gravatar:
             "s": self.size,
             "d": self.default_image,
             "f": "y" if self.force_default else None,
-            "r": self.max_rating if self.max_rating in ["g", "pg", "r", "x"] else None,
+            "r": self.max_rating
+            if self.max_rating in ["g", "pg", "r", "x"]
+            else None,
         }
 
         url_params = urlencode(
