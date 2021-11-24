@@ -1,5 +1,6 @@
-from gravify import Gravatar
 from pytest import raises
+
+from gravify import Gravatar
 
 
 def test_plain_email():
