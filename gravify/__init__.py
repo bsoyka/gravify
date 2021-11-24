@@ -1,17 +1,12 @@
 """Simple package to generate Gravatar URLs"""
 
 from hashlib import md5
+from urllib.parse import urlencode
+from urllib.request import urlopen
 
-from six import PY3
 from validate_email import validate_email
 
-if PY3:
-    from urllib.parse import urlencode
-    from urllib.request import urlopen
-else:
-    from urllib import urlencode, urlopen  # pylint: disable=no-name-in-module
-
-__version__ = '1.1.0'
+__version__ = "1.1.0"
 
 
 class Gravatar:
@@ -59,10 +54,10 @@ class Gravatar:
         """Validate and set string data type and value for email"""
         if isinstance(value, str):
             if self.verify_email and not validate_email(value):
-                raise ValueError('Invalid email address')
+                raise ValueError("Invalid email address")
             self._email = value.strip().lower()
         else:
-            raise TypeError('email must be string')
+            raise TypeError("email must be string")
 
     @property
     def verify_email(self):
@@ -74,7 +69,7 @@ class Gravatar:
         if isinstance(value, bool):
             self._verify_email = value
         else:
-            raise TypeError('verify_email must be boolean')
+            raise TypeError("verify_email must be boolean")
 
     @property
     def default_image(self):
@@ -88,22 +83,22 @@ class Gravatar:
             return
         if isinstance(value, str):
             possible_values = [
-                '404',
-                'mp',
-                'identicon',
-                'monsterid',
-                'wavatar',
-                'retro',
-                'robohash',
-                'blank',
+                "404",
+                "mp",
+                "identicon",
+                "monsterid",
+                "wavatar",
+                "retro",
+                "robohash",
+                "blank",
             ]
             if value not in possible_values:
                 raise ValueError(
-                    'default_image must be one of: {0}'.format(possible_values)
+                    "default_image must be one of: {0}".format(possible_values)
                 )
             self._default_image = value
         else:
-            raise TypeError('default_image must be string')
+            raise TypeError("default_image must be string")
 
     @property
     def size(self):
@@ -117,10 +112,10 @@ class Gravatar:
             return
         if isinstance(value, int):
             if not (1 <= value <= 2048):
-                raise ValueError('size must be an integer between 1 and 2048')
+                raise ValueError("size must be an integer between 1 and 2048")
             self._size = value
         else:
-            raise TypeError('size must be integer')
+            raise TypeError("size must be integer")
 
     @property
     def force_default(self):
@@ -132,7 +127,7 @@ class Gravatar:
         if isinstance(value, bool):
             self._force_default = value
         else:
-            raise TypeError('force_default must be boolean')
+            raise TypeError("force_default must be boolean")
 
     @property
     def max_rating(self):
@@ -145,14 +140,14 @@ class Gravatar:
             self._max_rating = value
             return
         if isinstance(value, str):
-            possible_values = ['g', 'pg', 'r', 'x']
+            possible_values = ["g", "pg", "r", "x"]
             if value not in possible_values:
                 raise ValueError(
-                    'max_rating must be one of: {0}'.format(possible_values)
+                    "max_rating must be one of: {0}".format(possible_values)
                 )
             self._max_rating = value
         else:
-            raise TypeError('max_rating must be string')
+            raise TypeError("max_rating must be string")
 
     @property
     def url(self):
@@ -163,21 +158,19 @@ class Gravatar:
         """
 
         params = {
-            's': self.size,
-            'd': self.default_image,
-            'f': 'y' if self.force_default else None,
-            'r': self.max_rating
-            if self.max_rating in ['g', 'pg', 'r', 'x']
-            else None,
+            "s": self.size,
+            "d": self.default_image,
+            "f": "y" if self.force_default else None,
+            "r": self.max_rating if self.max_rating in ["g", "pg", "r", "x"] else None,
         }
 
         url_params = urlencode(
             sorted({k: v for k, v in params.items() if v is not None}.items())
         )
 
-        _url = 'https://www.gravatar.com/avatar/' + self.hash
+        _url = "https://www.gravatar.com/avatar/" + self.hash
 
-        return _url + '?' + url_params if url_params else _url
+        return _url + "?" + url_params if url_params else _url
 
     @property
     def unsecure_url(self):
@@ -187,7 +180,7 @@ class Gravatar:
             str
         """
 
-        return self.url.replace('https://', 'http://', 1)
+        return self.url.replace("https://", "http://", 1)
 
     @property
     def hash(self):
@@ -197,7 +190,7 @@ class Gravatar:
             str
         """
 
-        return md5(self.email.encode('utf-8')).hexdigest()
+        return md5(self.email.encode("utf-8")).hexdigest()
 
     @property
     def file(self):
