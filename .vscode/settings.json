@@ -1,9 +1,13 @@
 {
     "editor.rulers": [
-        72,
-        79,
         80
     ],
     "reflowMarkdown.preferredLineLength": 80,
-    "restructuredtext.confPath": "${workspaceFolder}\\docs"
+    "restructuredtext.confPath": "${workspaceFolder}\\docs",
+    "[python]": {
+        "editor.rulers": [
+            72,
+            79
+        ]
+    }
 }
