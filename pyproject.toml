@@ -33,7 +33,7 @@ Documentation = "https://gravify.readthedocs.io"
 Source = "https://github.com/bsoyka/gravify"
 
 [tool.coverage.run]
-source = "gravify"
+source = ["gravify"]
 
 [tool.coverage.report]
 omit = ["tests/*"]
