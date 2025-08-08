@@ -3,8 +3,25 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import Mapping, Sequence
+from typing import Union
 
 import httpx
+
+PARAMS_TYPE = Union[
+    httpx.QueryParams,
+    Mapping[
+        str,
+        Union[
+            str, int, float, bool, Sequence[Union[str, int, float, bool, None]], None
+        ],
+    ],
+    list[tuple[str, Union[str, int, float, bool, None]]],
+    tuple[tuple[str, Union[str, int, float, bool, None]], ...],
+    str,
+    bytes,
+    None,
+]
 
 
 class RestAdapter:
@@ -32,7 +49,7 @@ class RestAdapter:
 
         self._logger = logging.getLogger(__name__)
 
-    def get(self, endpoint: str, params: dict | None = None) -> httpx.Response:
+    def get(self, endpoint: str, params: PARAMS_TYPE = None) -> httpx.Response:
         """Make a GET request to the Gravatar API.
 
         Args:
