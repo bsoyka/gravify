@@ -41,6 +41,7 @@ jobs:
         run: just test ${TEST_ENV}
         env:
           TEST_ENV: "${{ matrix.python-version }}"
+          GRAVATAR_KEY: "${{ secrets.GRAVATAR_KEY }}"
 
   coverage:
     name: Generate coverage report
