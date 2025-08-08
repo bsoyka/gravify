@@ -143,6 +143,7 @@ class AvatarGenerator:
             The generated avatar URL.
         """
         email_hash = hash_email(email)
-        query_string = urlencode(self._generate_parameters())
-
-        return f'https://www.gravatar.com/avatar/{email_hash}?{query_string}'
+        url = f'https://gravatar.com/avatar/{email_hash}'
+        if query_string := urlencode(self._generate_parameters()):
+            url += f'?{query_string}'
+        return url
