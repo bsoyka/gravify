@@ -1,5 +1,14 @@
 Profiles reference
 ==================
 
-.. automodule:: gravify.profiles
+API class
+---------
+
+.. autoclass:: gravify.ProfileAPI
+    :members:
+
+Data models
+-----------
+
+.. automodule:: gravify.profiles.models
     :members:
