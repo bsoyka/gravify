@@ -41,8 +41,5 @@ class GravatarAPI:
         hashed_email = hash_email(email)
         response = self._rest_adapter.get(f'/profiles/{hashed_email}')
         response.raise_for_status()
-        data = response.json()['entry'][0]
-        return Profile(
-            hash=data['hash'],
-            display_name=data['display_name'],
-        )
+        data = response.json()
+        return Profile(**data)
