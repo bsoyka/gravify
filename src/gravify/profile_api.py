@@ -7,26 +7,21 @@ from gravify.rest_adapter import RestAdapter
 from gravify.utils import hash_email
 
 
-class GravatarAPI:
+class ProfileAPI:
     """Client for interacting with the Gravatar API."""
 
     def __init__(
-        self,
-        api_key: str | None = None,
-        api_base_url: str = 'https://api.gravatar.com/v3',
-        avatar_base_url: str = 'https://gravatar.com/avatar',
+        self, *, api_key: str, api_base_url: str = 'https://api.gravatar.com/v3'
     ) -> None:
         """Initialize the Gravatar API client.
 
         Args:
             api_key: The API key to use for authentication.
             api_base_url: The base URL for the Gravatar API.
-            avatar_base_url: The base URL for Gravatar avatars.
         """
         self._rest_adapter = RestAdapter(
             api_key=api_key,
             api_base_url=api_base_url,
-            avatar_base_url=avatar_base_url,
         )
 
     def get_profile(self, email: str) -> Profile:
