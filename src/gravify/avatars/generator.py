@@ -120,7 +120,11 @@ class AvatarGenerator:
         if self.size is not None and self.size != 80:  # noqa: PLR2004
             params['s'] = self.size
         if self.default_image is not None:
-            params['d'] = self.default_image.value()
+            params['d'] = (
+                self.default_image.value
+                if isinstance(self.default_image, DefaultImage)
+                else self.default_image
+            )
         if self.force_default:
             params['f'] = 'y'
         if self.rating is not None and self.rating != Rating.G:
