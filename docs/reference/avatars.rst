@@ -1,8 +1,12 @@
 Avatars reference
 =================
 
+Generator class
+---------------
+
 .. autoclass:: gravify.AvatarGenerator
     :members: generate_url
+    :special-members: __init__
 
 Option enums
 ------------

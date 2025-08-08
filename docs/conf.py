@@ -22,9 +22,8 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
     'enum_tools.autoenum',
+    'sphinxcontrib.autodoc_pydantic',
 ]
-
-autoclass_content = 'both'
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
