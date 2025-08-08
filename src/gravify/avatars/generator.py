@@ -86,8 +86,8 @@ class AvatarGenerator:
         """
         if value is not None and self.default_image != DefaultImage.INITIALS:
             raise InitialsDefaultImageNotSetError
-        self._initials = value
-        self._name = None
+        self._initials: str | None = value
+        self._name: str | None = None
 
     @property
     def name(self) -> str | None:
