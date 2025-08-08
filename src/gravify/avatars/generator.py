@@ -110,17 +110,20 @@ class AvatarGenerator:
     def _generate_parameters(self) -> dict[str, str | int]:
         """Generate the parameters for the avatar URL.
 
+        This method will not include parameters that are set to their default values, as
+        defined by the Gravatar API specifications.
+
         Returns:
             A dictionary of parameters to be included in the avatar URL query string.
         """
         params: dict[str, str | int] = {}
-        if self.size is not None:
+        if self.size is not None and self.size != 80:  # noqa: PLR2004
             params['s'] = self.size
         if self.default_image is not None:
             params['d'] = self.default_image.value()
         if self.force_default:
             params['f'] = 'y'
-        if self.rating is not None:
+        if self.rating is not None and self.rating != Rating.G:
             params['r'] = self.rating.value()
 
         if self.initials is not None:
