@@ -4,6 +4,10 @@
   color: 80cbc4
   description: 'Related to the API adapter layer'
 
+- name: 'area:api'
+  color: 80cbc4
+  description: 'Related to the API interface layer'
+
 - name: 'area:avatars'
   color: 80cbc4
   description: 'Related to avatar URL generation and retrieval'
