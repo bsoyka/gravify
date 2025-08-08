@@ -1,5 +1,17 @@
 # Extends configuration at: https://raw.githubusercontent.com/bsoyka/cookiecutters/main/python-library/default-labels.yaml
 
-- name: 'area:core'
+- name: 'area:adapter'
   color: 80cbc4
-  description: 'Related to the core functionality of the project'
+  description: 'Related to the API adapter layer'
+
+- name: 'area:avatars'
+  color: 80cbc4
+  description: 'Related to avatar URL generation and retrieval'
+
+- name: 'area:models'
+  color: 80cbc4
+  description: 'Related to data models and schemas'
+
+- name: 'area:profiles'
+  color: 80cbc4
+  description: 'Related to profile retrieval'
