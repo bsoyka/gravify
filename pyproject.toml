@@ -27,8 +27,8 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "httpx>=0.28.1",
-    "pydantic[email]>=2.11.7",
+    "httpx>=0.23.1",
+    "pydantic[email]>=2.8.0",
 ]
 
 [dependency-groups]
