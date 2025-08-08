@@ -24,16 +24,17 @@ PARAMS_TYPE = (
 class RestAdapter:
     """Adapter for the Gravatar API."""
 
-    def __init__(self, *, api_key: str, api_base_url: str) -> None:
+    def __init__(self, *, api_base_url: str, api_key: str | None = None) -> None:
         """Initialize the Gravatar API adapter.
 
         Args:
-            api_key: The API key to use for authentication.
             api_base_url: The base URL for the Gravatar API.
+            api_key: The API key to use for authentication.
         """
         self.api_base_url = api_base_url
         self.api_client = httpx.Client(
-            base_url=api_base_url, headers={'Authorization': f'Bearer {api_key}'}
+            base_url=api_base_url,
+            headers={'Authorization': f'Bearer {api_key}'} if api_key else {},
         )
 
         self._logger = logging.getLogger(__name__)
