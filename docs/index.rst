@@ -3,9 +3,9 @@ Gravify
 
 **Gravify** is a Python library to interface with Gravatar profiles and avatars.
 
->>> import gravify
->>> gravify.do_something()
-Result
+>>> from gravify import AvatarGenerator
+>>> AvatarGenerator(size=500).generate_url('hello@example.com')
+'https://gravatar.com/avatar/1753bdb368271a785887ddbfb926164f2f7c6a88f609c07ff0401c5572955206?s=500'
 
 |Total Downloads| |Supported Versions| |Testing Status| |Coverage| |GitHub last commit| |GitHub Repo stars|
 
