@@ -16,5 +16,5 @@ def hash_email(email: str) -> str:
     Returns:
         The hash of the email address in lowercase hexadecimal format.
     """
-    email_encoded = email.lower().encode('utf-8')
+    email_encoded = email.strip().lower().encode('utf-8')
     return sha256(email_encoded).hexdigest()
