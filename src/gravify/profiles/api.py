@@ -11,7 +11,10 @@ class ProfileAPI:
     """Client for interacting with the Gravatar API."""
 
     def __init__(
-        self, *, api_key: str, api_base_url: str = 'https://api.gravatar.com/v3'
+        self,
+        *,
+        api_key: str | None = None,
+        api_base_url: str = 'https://api.gravatar.com/v3',
     ) -> None:
         """Initialize the Gravatar API client.
 
