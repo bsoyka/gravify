@@ -46,8 +46,18 @@ Install it with your preferred package manager:
 
 Gravify officially supports Python 3.9+.
 
-API reference
--------------
+Tutorials and examples
+----------------------
+.. toctree::
+    :maxdepth: 2
 
-.. automodule:: gravify
-    :members:
+    tutorials/avatars
+    tutorials/profiles
+
+Further reference
+-----------------
+.. toctree::
+    :maxdepth: 2
+
+    reference/avatars
+    reference/profiles
