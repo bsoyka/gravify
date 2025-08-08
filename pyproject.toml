@@ -112,6 +112,9 @@ flake8-tidy-imports.ban-relative-imports = "all"
 [tool.mypy]
 strict = true
 
+[tool.pytest.ini_options]
+addopts = '--doctest-glob="*.rst"'
+
 [tool.tox]
 env_list = [
     "py3.13", "py3.12", "py3.11", "py3.10",
