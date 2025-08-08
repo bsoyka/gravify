@@ -1,5 +1,6 @@
 """Avatar URL generator for Gravify."""
 
+from typing import cast
 from urllib.parse import urlencode
 
 from gravify.avatars.exceptions import (
@@ -104,7 +105,7 @@ class AvatarGenerator:
         if self.force_default:
             params['f'] = 'y'
         if self.rating is not None and self.rating != Rating.G:
-            params['r'] = self.rating.value()
+            params['r'] = cast('str', self.rating.value)
 
         if self.initials is not None:
             params['initials'] = self.initials
