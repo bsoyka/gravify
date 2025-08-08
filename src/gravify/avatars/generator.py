@@ -1,37 +1,13 @@
 """Avatar URL generator for Gravify."""
 
-from enum import Enum
 from urllib.parse import urlencode
 
 from gravify.avatars.exceptions import (
     InitialsAndNameError,
     InitialsDefaultImageNotSetError,
 )
+from gravify.avatars.options import DefaultImage, Rating
 from gravify.utils import hash_email
-
-
-class DefaultImage(Enum):
-    """Default image options for Gravatar."""
-
-    INITIALS = 'initials'
-    COLOR = 'color'
-    NOT_FOUND = '404'
-    MYSTERY_PERSON = 'mp'
-    IDENTICON = 'identicon'
-    MONSTER_ID = 'monsterid'
-    WAVATAR = 'wavatar'
-    RETRO = 'retro'
-    ROBOHASH = 'robohash'
-    BLANK = 'blank'
-
-
-class Rating(Enum):
-    """Rating options for Gravatar."""
-
-    G = 'g'
-    PG = 'pg'
-    R = 'r'
-    X = 'x'
 
 
 class AvatarGenerator:
