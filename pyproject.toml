@@ -43,6 +43,7 @@ dev = [
     "tox-uv >= 1.21.0",
 ]
 docs = [
+    "enum-tools[sphinx]>=0.13.0",
     "sphinx",
 ]
 gha-update = [
