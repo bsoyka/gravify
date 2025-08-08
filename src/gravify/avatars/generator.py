@@ -1,11 +1,13 @@
 """Avatar URL generator for Gravify."""
 
 from enum import StrEnum
+from urllib.parse import urlencode
 
 from gravify.avatars.exceptions import (
     InitialsAndNameError,
     InitialsDefaultImageNotSetError,
 )
+from gravify.utils import hash_email
 
 
 class DefaultImage(StrEnum):
@@ -104,3 +106,40 @@ class AvatarGenerator:
             raise InitialsDefaultImageNotSetError
         self._name = value
         self._initials = None
+
+    def _generate_parameters(self) -> dict[str, str | int]:
+        """Generate the parameters for the avatar URL.
+
+        Returns:
+            A dictionary of parameters to be included in the avatar URL query string.
+        """
+        params: dict[str, str | int] = {}
+        if self.size is not None:
+            params['s'] = self.size
+        if self.default_image is not None:
+            params['d'] = self.default_image.value()
+        if self.force_default:
+            params['f'] = 'y'
+        if self.rating is not None:
+            params['r'] = self.rating.value()
+
+        if self.initials is not None:
+            params['initials'] = self.initials
+        if self.name is not None:
+            params['name'] = self.name
+
+        return params
+
+    def generate_url(self, email: str) -> str:
+        """Generate the avatar URL for the given email.
+
+        Args:
+            email: The email address to generate the avatar for.
+
+        Returns:
+            The generated avatar URL.
+        """
+        email_hash = hash_email(email)
+        query_string = urlencode(self._generate_parameters())
+
+        return f'https://www.gravatar.com/avatar/{email_hash}?{query_string}'
