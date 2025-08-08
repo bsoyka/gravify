@@ -108,7 +108,7 @@ class AvatarGenerator:
         if self.force_default:
             params['f'] = 'y'
         if self.rating is not None and self.rating != _DEFAULT_RATING:
-            params['r'] = cast('str', self.rating.value)
+            params['r'] = cast('str', self.rating.value)  # type: ignore[redundant-cast]
 
         if self.initials is not None:
             params['initials'] = self.initials
