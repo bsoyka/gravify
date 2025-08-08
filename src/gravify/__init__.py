@@ -2,7 +2,7 @@
 
 import importlib.metadata
 
-from gravify.profile_api import ProfileAPI
+from gravify.profiles import ProfileAPI
 
 __version__ = importlib.metadata.version('gravify')
 

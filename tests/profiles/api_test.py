@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from gravify.profile_api import ProfileAPI
+from gravify import ProfileAPI
 
 
 @pytest.fixture
