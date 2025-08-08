@@ -1,6 +1,6 @@
 """Avatar URL generator for Gravify."""
 
-from enum import StrEnum
+from enum import Enum
 from urllib.parse import urlencode
 
 from gravify.avatars.exceptions import (
@@ -10,7 +10,7 @@ from gravify.avatars.exceptions import (
 from gravify.utils import hash_email
 
 
-class DefaultImage(StrEnum):
+class DefaultImage(Enum):
     """Default image options for Gravatar."""
 
     INITIALS = 'initials'
@@ -25,7 +25,7 @@ class DefaultImage(StrEnum):
     BLANK = 'blank'
 
 
-class Rating(StrEnum):
+class Rating(Enum):
     """Rating options for Gravatar."""
 
     G = 'g'
