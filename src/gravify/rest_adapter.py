@@ -4,45 +4,34 @@ from __future__ import annotations
 
 import logging
 from collections.abc import Mapping, Sequence
-from typing import Union
 
 import httpx
 
-PARAMS_TYPE = Union[
-    httpx.QueryParams,
-    Mapping[
+PARAMS_TYPE = (
+    httpx.QueryParams
+    | Mapping[
         str,
-        Union[
-            str, int, float, bool, Sequence[Union[str, int, float, bool, None]], None
-        ],
-    ],
-    list[tuple[str, Union[str, int, float, bool, None]]],
-    tuple[tuple[str, Union[str, int, float, bool, None]], ...],
-    str,
-    bytes,
-    None,
-]
+        str | int | float | bool | Sequence[str | int | float | bool | None] | None,
+    ]
+    | list[tuple[str, str | int | float | bool | None]]
+    | tuple[tuple[str, str | int | float | bool | None], ...]
+    | str
+    | bytes
+    | None
+)
 
 
 class RestAdapter:
     """Adapter for the Gravatar API."""
 
-    def __init__(
-        self,
-        *,
-        api_key: str | None = None,
-        api_base_url: str = 'https://api.gravatar.com/v3',
-        avatar_base_url: str = 'https://gravatar.com/avatar',
-    ) -> None:
+    def __init__(self, *, api_key: str, api_base_url: str) -> None:
         """Initialize the Gravatar API adapter.
 
         Args:
             api_key: The API key to use for authentication.
             api_base_url: The base URL for the Gravatar API.
-            avatar_base_url: The base URL for Gravatar avatars.
         """
         self.api_base_url = api_base_url
-        self.avatar_base_url = avatar_base_url
         self.api_client = httpx.Client(
             base_url=api_base_url, headers={'Authorization': f'Bearer {api_key}'}
         )

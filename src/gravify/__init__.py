@@ -2,11 +2,11 @@
 
 import importlib.metadata
 
-from gravify.gravatar_api import GravatarAPI
+from gravify.profile_api import ProfileAPI
 
 __version__ = importlib.metadata.version('gravify')
 
 __all__ = [
-    'GravatarAPI',
+    'ProfileAPI',
     '__version__',
 ]

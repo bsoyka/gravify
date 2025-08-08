@@ -1,10 +1,10 @@
-"""Test suite for the GravatarAPI class."""
+"""Test suite for the ProfileAPI class."""
 
 import os
 
 import pytest
 
-from gravify.gravatar_api import GravatarAPI
+from gravify.profile_api import ProfileAPI
 
 
 @pytest.fixture
@@ -20,16 +20,16 @@ def gravatar_api_key() -> str:
 
 
 @pytest.fixture
-def gravatar_api(gravatar_api_key: str) -> GravatarAPI:
+def gravatar_api(gravatar_api_key: str) -> ProfileAPI:
     """Fixture to create a GravatarAPI instance with the provided API key.
 
     Returns:
-        GravatarAPI: An instance of the GravatarAPI class initialized with the API key.
+        ProfileAPI: An instance of the GravatarAPI class initialized with the API key.
     """
-    return GravatarAPI(api_key=gravatar_api_key)
+    return ProfileAPI(api_key=gravatar_api_key)
 
 
-def test_get_profile(gravatar_api: GravatarAPI) -> None:
+def test_get_profile(gravatar_api: ProfileAPI) -> None:
     """Test fetching a Gravatar profile."""
     email = 'hello@bsoyka.me'
     profile = gravatar_api.get_profile(email)
