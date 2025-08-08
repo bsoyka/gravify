@@ -1,4 +1,4 @@
-"""Gravatar API client for fetching user profiles and avatars."""
+"""Gravatar API client for fetching user profiles."""
 
 from __future__ import annotations
 
