@@ -10,6 +10,9 @@ from gravify.avatars.exceptions import (
 from gravify.avatars.options import DefaultImage, Rating
 from gravify.utils import hash_email
 
+_DEFAULT_AVATAR_SIZE = 80
+_DEFAULT_RATING = Rating.G
+
 
 class AvatarGenerator:
     """Gravatar avatar URL generator."""
@@ -94,7 +97,7 @@ class AvatarGenerator:
             A dictionary of parameters to be included in the avatar URL query string.
         """
         params: dict[str, str | int] = {}
-        if self.size is not None and self.size != 80:  # noqa: PLR2004
+        if self.size is not None and self.size != _DEFAULT_AVATAR_SIZE:
             params['s'] = self.size
         if self.default_image is not None:
             params['d'] = (
@@ -104,7 +107,7 @@ class AvatarGenerator:
             )
         if self.force_default:
             params['f'] = 'y'
-        if self.rating is not None and self.rating != Rating.G:
+        if self.rating is not None and self.rating != _DEFAULT_RATING:
             params['r'] = cast('str', self.rating.value)
 
         if self.initials is not None:
