@@ -2,6 +2,11 @@
 
 from enum import StrEnum
 
+from gravify.avatars.exceptions import (
+    InitialsAndNameError,
+    InitialsDefaultImageNotSetError,
+)
+
 
 class DefaultImage(StrEnum):
     """Default image options for Gravatar."""
@@ -50,10 +55,52 @@ class AvatarGenerator:
             rating: Rating of the avatar (default is G).
             initials: Initials to use for the avatar if no image is found.
             name: Name to use for the avatar initials if no image is found.
+
+        Raises:
+            InitialsAndNameError: If both initials and name are provided.
         """
         self.size = size
         self.default_image = default_image
         self.force_default = force_default
         self.rating = rating
+
+        if initials is not None and name is not None:
+            raise InitialsAndNameError
         self.initials = initials
         self.name = name
+
+    @property
+    def initials(self) -> str | None:
+        """Get the initials used for the "initials" default avatar."""
+        return self._initials
+
+    @initials.setter
+    def initials(self, value: str | None) -> None:
+        """Set the initials used for the "initials" default avatar.
+
+        Raises:
+            InitialsDefaultImageNotSetError: If initials are set but the default image
+                is not set to INITIALS.
+        """
+        if value is not None and self.default_image != DefaultImage.INITIALS:
+            raise InitialsDefaultImageNotSetError
+        self._initials = value
+        self._name = None
+
+    @property
+    def name(self) -> str | None:
+        """Get the name used for the "initials" default avatar."""
+        return self._name
+
+    @name.setter
+    def name(self, value: str | None) -> None:
+        """Set the name used for the "initials" default avatar.
+
+        Raises:
+            InitialsDefaultImageNotSetError: If a name is set but the default image is
+                not set to INITIALS.
+        """
+        if value is not None and self.default_image != DefaultImage.INITIALS:
+            raise InitialsDefaultImageNotSetError
+        self._name = value
+        self._initials = None
