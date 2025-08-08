@@ -44,5 +44,5 @@ class GravatarAPI:
         data = response.json()['entry'][0]
         return Profile(
             hash=data['hash'],
-            display_name=data['displayName'],
+            display_name=data['display_name'],
         )
