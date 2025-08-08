@@ -28,7 +28,7 @@ You can customize the avatar URLs by passing additional parameters to the genera
 
 Notice the added query parameters in the resulting URL.
 Gravify will try to keep the URL as short as possible, but it will add the necessary parameters to customize the avatar according to your preferences.
-For example, if you set the `size` parameter to its default value of `80`, the URL will not include the `s` parameter, as 80 pixels is already the default size for Gravatar avatars.
+For example, if you set the **size** parameter to its default value of `80`, the URL will not include the `s` parameter, as 80 pixels is already the default size for Gravatar avatars.
 
 You can pass the following parameters to the :class:`~gravify.AvatarGenerator` constructor:
 
