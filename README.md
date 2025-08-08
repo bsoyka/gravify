@@ -1,29 +1,41 @@
-# gravify
+# Gravify
 
-**gravify** is a simple package to generate
-[Gravatar](https://en.gravatar.com/) URLs. :link:
+**Gravify** is a Python library to interface with Gravatar profiles and avatars.
 
-```py
->>> user = Gravatar("example@example.com")
->>> user.url
-'https://www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8'
+```python
+>>> import gravify
+>>> gravify.do_something()
+Result
 ```
 
-[![Downloads](https://pepy.tech/badge/gravify)](https://pepy.tech/project/gravify)
-[![Supported Versions](https://img.shields.io/pypi/pyversions/gravify.svg)](https://pypi.org/project/gravify)
-[![Testing](https://img.shields.io/github/workflow/status/bsoyka/gravify/Python%20package?label=tests)](https://github.com/bsoyka/gravify/actions?query=workflow%3A%22Python+package%22)
-[![License](https://img.shields.io/pypi/l/gravify)](https://github.com/bsoyka/gravify/blob/master/LICENSE)
-[![Version](https://img.shields.io/pypi/v/gravify?label=latest)](https://pypi.org/project/gravify)
+[![Total Downloads](https://img.shields.io/pepy/dt/gravify)][pypi]
+[![Supported Versions](https://img.shields.io/pypi/pyversions/gravify.svg)][pypi]
+[![Testing Status](https://img.shields.io/github/actions/workflow/status/bsoyka/gravify/test.yml?branch=main&label=tests)][testing]
+[![Coverage](https://img.shields.io/codecov/c/github/bsoyka/gravify)][codecov]
+[![GitHub last commit](https://img.shields.io/github/last-commit/bsoyka/gravify)][github]
 
-## Installation
+## Installation and usage
 
-gravify is available on PyPI:
+Gravify is [available on PyPI][pypi].
+Install it with your preferred package manager:
 
 ```sh
+$ uv add gravify
 $ pip install gravify
 ```
 
-gravify officially supports Python 3.6+.
+Gravify officially supports Python 3.9+.
 
-## API Reference
-See [Read the Docs](https://gravify.readthedocs.io/) for gravify's documentation.
+**[Read the documentation][docs]** to learn how to use Gravify.
+
+[codecov]: https://codecov.io/github/bsoyka/gravify
+
+[docs]: https://gravify.readthedocs.io/
+
+[github]: https://github.com/bsoyka/gravify
+
+[license]: https://github.com/bsoyka/gravify/blob/master/LICENSE
+
+[pypi]: https://pypi.org/project/gravify/
+
+[testing]: https://github.com/bsoyka/gravify/actions/workflows/test.yml
