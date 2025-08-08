@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from gravify.models import Profile
+from gravify.profiles.models import Profile
 from gravify.rest_adapter import RestAdapter
 from gravify.utils import hash_email
 
