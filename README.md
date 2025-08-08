@@ -24,7 +24,7 @@ $ uv add gravify
 $ pip install gravify
 ```
 
-Gravify officially supports Python 3.9+.
+Gravify officially supports Python 3.10+.
 
 **[Read the documentation][docs]** to learn how to use Gravify.
 
