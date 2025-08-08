@@ -67,6 +67,8 @@ jobs:
       - name: Run tests and generate coverage report
         run: |
           just coverage
+        env:
+          GRAVATAR_KEY: "${{ secrets.GRAVATAR_KEY }}"
 
       - name: Upload results to Codecov
         uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
