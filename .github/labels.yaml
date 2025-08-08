@@ -2,11 +2,7 @@
 
 - name: 'area:adapter'
   color: 80cbc4
-  description: 'Related to the API adapter layer'
-
-- name: 'area:api'
-  color: 80cbc4
-  description: 'Related to the API interface layer'
+  description: 'Related to the REST API adapter layer'
 
 - name: 'area:avatars'
   color: 80cbc4
