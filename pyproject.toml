@@ -1,69 +1,164 @@
-### BUILD CONFIG ###
-
-[build-system]
-build-backend = "flit_core.buildapi"
-requires = ["flit_core >=3.2,<4"]
-
 [project]
-authors = [{name = "Ben Soyka", email = "bensoyka@icloud.com"}]
-classifiers = [
-  "Development Status :: 5 - Production/Stable",
-  "Intended Audience :: Developers",
-  "Natural Language :: English",
-  "License :: OSI Approved :: MIT License",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.6",
-  "Programming Language :: Python :: 3.7",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-]
-dependencies = ["validate_email==1.3"]
-dynamic = ["version", "description"]
-license = {file = "LICENSE"}
 name = "gravify"
+version = "2.0.0"
+description = "A library to interface with Gravatar profiles and avatars."
+authors = [
+    { name = "Ben Soyka", email = "hello@bsoyka.me" }
+]
 readme = "README.md"
-requires-python = "~=3.6"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+classifiers = [
+#    "Development Status :: 1 - Planning",
+#    "Development Status :: 2 - Pre-Alpha",
+#    "Development Status :: 3 - Alpha",
+#    "Development Status :: 4 - Beta",
+#    "Development Status :: 5 - Production/Stable",
+#    "Development Status :: 6 - Mature",
+#    "Development Status :: 7 - Inactive",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
+dependencies = [
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit >= 3.3.0",
+    "ruff >= 0.12.0",
+    "tox >= 4.24.1",
+    "tox-uv >= 1.21.0",
+]
+docs = [
+    "sphinx",
+]
+gha-update = [
+    "gha-update ; python_version >= '3.12'",
+]
+tests = [
+    "pytest",
+    "pytest-cov",
+    "tomli >= 1.1.0 ; python_version < '3.11'",
+]
+typing = [
+    "mypy",
+    "pytest",
+    "tomli",
+]
 
 [project.urls]
 Changelog = "https://github.com/bsoyka/gravify/releases"
-Documentation = "https://gravify.readthedocs.io"
-Source = "https://github.com/bsoyka/gravify"
+Documentation = "https://gravify.readthedocs.io/"
+Sponsor = "https://github.com/sponsors/bsoyka"
 
-### TOOLS ###
+[build-system]
+requires = ["uv_build>=0.7.19,<0.9.0"]
+build-backend = "uv_build"
 
-[tool.black]
-line-length = 79
+[tool.uv]
+default-groups = ["dev", "tests", "typing"]
 
-[tool.coverage.run]
-source = ["gravify"]
+[tool.uv.build-backend]
+module-name = "gravify"
+module-root = "src"
 
-[tool.coverage.report]
-omit = ["tests/*"]
+[tool.ruff]
+preview = true
 
-[tool.isort]
-line_length = 79
-profile = "black"
+[tool.ruff.format]
+docstring-code-format = true
+line-ending = "lf"
+quote-style = "single"
 
-[tool.poe.tasks]
-_black = "black ."
-_isort = "isort ."
-coverage = "coverage run -m pytest"
-format = ["_black", "_isort"]
-install = "flit install"
-test = "tox"
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "CPY",     # Checks for a file-level copyright statement.
+    "COM812",  # Checks for the absence of trailing commas. Not recommended with formatter.
+    "COM819",  # Checks for prohibited trailing commas. Not recommended with formatter.
+    "FIX002",  # Checks for to-do comments.
+]
+pydocstyle.convention = "google"
+flake8-quotes.inline-quotes = "single"
+flake8-tidy-imports.ban-relative-imports = "all"
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
+[tool.ruff.lint.per-file-ignores]
+"*_test.py" = [
+    "INP",     # Checks for packages missing an __init__.py file.
+    "PLC2701", # Checks for private name imports.
+    "PLR2004", # Checks for "magic" values.
+    "S101",    # Checks for the use of assert statements.
+]
+"docs/conf.py" = [
+    "INP",     # Checks for packages missing an __init__.py file.
+]
+
+[tool.mypy]
+strict = true
 
 [tool.tox]
-legacy_tox_ini = """
-[tox]
-envlist = py36,py37,py38,py39,py310
-isolated_build = True
+env_list = [
+    "py3.13", "py3.12", "py3.11", "py3.10", "py3.9",
+    "style",
+    "typing",
+]
 
-[testenv]
-deps = pytest
-commands = pytest
-"""
+[tool.tox.env_run_base]
+description = "run tests with pytest"
+runner = "uv-venv-lock-runner"
+package = "wheel"
+wheel_build_env = ".pkg"
+constrain_package_deps = true
+use_frozen_constraints = true
+dependency_groups = ["tests"]
+commands = [["pytest", {replace = "posargs", default = [], extend = true}]]
+
+[tool.tox.env.style]
+description = "run all pre-commit hooks on all files"
+dependency_groups = ["dev"]
+skip_install = true
+commands = [["pre-commit", "run", "--all-files"]]
+
+[tool.tox.env.typing]
+description = "run static type checkers"
+dependency_groups = ["typing"]
+commands = [["mypy", {replace = "posargs", default = ["."], extend = true}]]
+
+[tool.tox.env.docs]
+description = "build documentation"
+dependency_groups = ["docs"]
+commands = [["sphinx-build", "-b", "html", "docs", "docs/_build"]]
+
+[tool.tox.env.update-actions]
+description = "update GitHub Actions pins"
+labels = ["update"]
+dependency_groups = ["gha-update"]
+skip_install = true
+commands = [["gha-update"]]
+
+[tool.tox.env.update-pre_commit]
+description = "update pre-commit pins"
+labels = ["update"]
+dependency_groups = ["dev"]
+skip_install = true
+commands = [["pre-commit", "autoupdate", "--freeze", "-j4"]]
+
+[tool.tox.env.update-requirements]
+description = "update uv lock"
+labels = ["update"]
+dependency_groups = []
+no_default_groups = true
+skip_install = true
+commands = [["uv", "lock", {replace = "posargs", default = ["-U"], extend = true}]]

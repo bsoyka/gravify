@@ -1,7 +1,7 @@
 root = true
 
 [*]
-end_of_line = crlf
+end_of_line = lf
 insert_final_newline = true
 charset = utf-8
 
@@ -9,3 +9,9 @@ indent_size = 4
 indent_style = space
 
 trim_trailing_whitespace = true
+
+[{*.json,*.json5,*.yaml,*.yml}]
+indent_size = 2
+
+[{*.md,*.markdown}]
+trim_trailing_whitespace = false

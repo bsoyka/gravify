@@ -1,43 +1,53 @@
-gravify
-========
+Gravify
+=======
 
-**gravify** is a simple package to generate `Gravatar <https://en.gravatar.com/>`_ URLs. 🔗
+**Gravify** is a Python library to interface with Gravatar profiles and avatars.
 
-.. code:: python
+>>> import gravify
+>>> gravify.do_something()
+Result
 
-    >>> user = Gravatar("example@example.com")
-    >>> user.url
-    'https://www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8'
+|Total Downloads| |Supported Versions| |Testing Status| |Coverage| |GitHub last commit| |GitHub Repo stars|
 
-.. image:: https://pepy.tech/badge/gravify
-   :target: https://pepy.tech/project/gravify
-   :alt: Downloads
-.. image:: https://img.shields.io/pypi/pyversions/gravify
-   :target: https://pypi.org/project/gravify
+.. |Total Downloads| image:: https://img.shields.io/pepy/dt/gravify
+   :target: https://pypi.org/project/gravify/
+   :alt: Total Downloads
+
+.. |Supported Versions| image:: https://img.shields.io/pypi/pyversions/gravify.svg
+   :target: https://pypi.org/project/gravify/
    :alt: Supported Versions
-.. image:: https://img.shields.io/github/workflow/status/bsoyka/gravify/Python%20package?label=tests
-   :target: https://github.com/bsoyka/gravify/actions?query=workflow%3A%22Python+package%22
-   :alt: Testing
-.. image:: https://img.shields.io/pypi/l/gravify
-   :target: https://github.com/bsoyka/gravify/blob/master/LICENSE
-   :alt: License
-.. image:: https://img.shields.io/pypi/v/gravify?label=latest
-   :target: https://pypi.org/project/gravify
-   :alt: Version
+
+.. |Testing Status| image:: https://img.shields.io/github/actions/workflow/status/bsoyka/gravify/test.yml?branch=main&label=tests
+   :target: https://github.com/bsoyka/gravify/actions/workflows/test.yml
+   :alt: Testing Status
+
+.. |Coverage| image:: https://img.shields.io/codecov/c/github/bsoyka/gravify
+   :target: https://codecov.io/github/bsoyka/gravify
+   :alt: Coverage
+
+.. |GitHub last commit| image:: https://img.shields.io/github/last-commit/bsoyka/gravify
+   :target: https://github.com/bsoyka/gravify
+   :alt: GitHub last commit
+
+.. |GitHub Repo stars| image:: https://img.shields.io/github/stars/bsoyka/gravify
+   :target: https://github.com/bsoyka/gravify
+   :alt: GitHub Repo stars
 
 Installation
 ------------
 
-gravify is available on PyPI:
+Gravify is `available on PyPI <https://pypi.org/project/gravify/>`_.
+Install it with your preferred package manager:
 
-.. code:: console
+.. code-block:: shell
 
+    $ uv add gravify
     $ pip install gravify
 
-gravify officially supports Python 3.5+.
+Gravify officially supports Python 3.9+.
 
-API Reference
+API reference
 -------------
 
 .. automodule:: gravify
-   :members:
+    :members:
