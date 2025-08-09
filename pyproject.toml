@@ -46,7 +46,9 @@ docs = [
 gha-update = [
     "gha-update ; python_version >= '3.12'",
 ]
+test = []
 tests = [
+    "hypothesis>=6.137.1",
     "pytest",
     "pytest-cov",
     "tomli >= 1.1.0 ; python_version < '3.11'",
