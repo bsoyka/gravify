@@ -17,7 +17,7 @@ _DEFAULT_RATING = Rating.G
 class AvatarGenerator:
     """Gravatar avatar URL generator."""
 
-    def __init__(  # noqa: PLR0913
+    def __init__(  # ruff: ignore[too-many-arguments]
         self,
         size: int | None = None,
         *,
